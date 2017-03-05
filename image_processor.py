@@ -144,14 +144,14 @@ def make_ptg(image_path, num_rows, num_cols):
 
 
 def write_ratio(cols):
-
     """
-    Write ratio to a file.
-    @TODO I do not know why this method exists, or why the constant 8.0 exists.
+    Write ratio of milimiters per pixel on the canvas to Ratio.txt file.
     """
-    ratio_file = open("Ratio.txt", 'a')
-    ratio_file.write(str(8.0 / cols))
-    ratio_file.close()
+    CANVAS_WIDTH_INCHES = 8.0
+    MMS_PER_INCH = 25.4
+    CANVAS_WIDTH_MM = CANVAS_WIDTH_INCHES * MMS_PER_INCH
+    milimiters_per_pixel = CANVAS_WIDTH_MM / cols
+    open("Ratio.txt", 'a').write(str(milimiters_per_pixel))
 
 
 if __name__ == "__main__":
